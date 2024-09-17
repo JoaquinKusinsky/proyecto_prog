@@ -3,13 +3,13 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Peliculas from "../components/Peliculas";
 
-function Home(){
+function Favoritos(){
     return(
         <React.Fragment>
-
+        <h1>Películas favoritas:</h1>
             <Footer/>
         </React.Fragment>
     )
 }
 
-export default Home;
+export default Favoritos;

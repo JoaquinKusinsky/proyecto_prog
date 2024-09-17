@@ -11,8 +11,12 @@ const opciones = [
         ruta: "/favoritos"
     },
     {
-        nombre: "Ver todas",
-        ruta: "/verTodas"
+        nombre: "Más populares",
+        ruta: "/populares"
+    },
+    {
+        nombre: "En cartel",
+        ruta: "/cartel"
     }
 ]
 
