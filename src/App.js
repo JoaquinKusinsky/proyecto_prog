@@ -7,6 +7,7 @@ import Favoritos from "./screens/Favoritos";
 import Populares from "./screens/Populares";
 import Cartel from "./screens/Cartel";
 import NotFound from "./screens/NotFound";
+import DetalleCard from "./components/DetalleCard";
 
 function App(props){
   return (
@@ -17,6 +18,7 @@ function App(props){
     <Route path="/favoritos" component={Favoritos}/>
     <Route path="/populares" component={Populares}/>
     <Route path="/cartel" component={Cartel}/>
+
     <Route path="" component={NotFound}/>
     </Switch>
     <Footer/>

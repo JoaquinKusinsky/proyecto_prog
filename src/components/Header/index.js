@@ -28,8 +28,10 @@ function Header(props){
                 opciones.map((elm) => <Headers name={elm} />)
             }
         </ul>
-        <ul class="logo">
-            <li><img src="./img/logo.jpg" alt=""/></li>
+        <ul  class="logo">
+            <a href="">
+                <li><img src="./img/logo.jpg" alt=""/></li>
+            </a>
         </ul>
     </nav>
    )
