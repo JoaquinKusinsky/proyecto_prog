@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link } from 'react-router-dom';
-import './peliculaUna.css';
+
 
 class PeliculaUna extends Component {
     constructor(props) {
@@ -15,6 +15,7 @@ class PeliculaUna extends Component {
         this.setState({ 
             verMas: !this.state.verMas });
     };
+
     componentDidMount(){
         const guardaFavs = localStorage.getItem('favoritos');
         if (guardaFavs != null){
@@ -25,29 +26,29 @@ class PeliculaUna extends Component {
             }
         }
     }
-    agregaraFavoritos(){
+
+    agregaraFavoritos = () => {
         const guardaFavs = localStorage.getItem('favoritos');
+        let favoritos = [];
         if(guardaFavs != null){
-            const favoritos = JSON.parse(guardaFavs);
-            favoritos.push(this.props.pelicula.id);
-            localStorage.setItem('favoritos', JSON.stringify(favoritos));
-        }else {
-            const unFavorito = [this.props.pelicula.id];
-            const favoritos = JSON.stringify(unFavorito);
-            localStorage.setItem('favoritos', favoritos);
+            favoritos = JSON.parse(guardaFavs);
         }
+        favoritos.push(this.props.pelicula.id);
+        localStorage.setItem('favoritos', JSON.stringify(favoritos));
         this.setState({ favorito: true });
     }
-    sacarDeFavoritos(){
+
+    sacarDeFavoritos = () => {
         const guardaFavs = localStorage.getItem('favoritos');
-        const favoritos = JSON.parse(guardaFavs);
-        const nuevosFavoritos = favoritos.filter((id) => id !== this.props.pelicula.id);
-        localStorage.setItem('favoritos', JSON.stringify(nuevosFavoritos));
+        let favoritos = JSON.parse(guardaFavs);
+        favoritos = favoritos.filter((id) => id !== this.props.pelicula.id);
+        localStorage.setItem('favoritos', JSON.stringify(favoritos));
         this.setState({ favorito: false });
     }
+
     render() {
         const { pelicula } = this.props;
-        const { verMas, favorito } = this.state;
+        const { verMas} = this.state;
 
         return (
             <li className='containerDepeliculas' key={pelicula.id}>
@@ -55,6 +56,7 @@ class PeliculaUna extends Component {
                     <img src={`https://image.tmdb.org/t/p/original${pelicula.poster_path}`} alt={pelicula.title} />
                     <h3>{pelicula.title}</h3>
                 </Link>
+                
                 {verMas && <p>{pelicula.overview}</p>}
                 <button onClick={this.cambiarVerMas}>
                     {verMas ? "Ver menos" : "Ver más"}
