@@ -7,7 +7,8 @@ import Favoritos from "./screens/Favoritos";
 import Populares from "./screens/Populares";
 import Cartel from "./screens/Cartel";
 import NotFound from "./screens/NotFound";
-import DetalleCard from "./components/DetalleCard";
+import Detalle from "./components/Detalle";
+//import Busqueda from "./components/Busqueda";
 
 function App(props){
   return (
@@ -17,8 +18,8 @@ function App(props){
     <Route path="/" exact={true} component={Home}/>
     <Route path="/favoritos" component={Favoritos}/>
     <Route path="/populares" component={Populares}/>
+    <Route path="/detalle/:id" component={Detalle}/>
     <Route path="/cartel" component={Cartel}/>
-
     <Route path="" component={NotFound}/>
     </Switch>
     <Footer/>

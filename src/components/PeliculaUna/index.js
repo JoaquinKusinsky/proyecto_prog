@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Link } from 'react-router-dom';
-import Peliculas from '../Peliculas';
 import './peliculaUna.css';
 
 class PeliculaUna extends Component {
@@ -52,10 +51,10 @@ class PeliculaUna extends Component {
 
         return (
             <li className='containerDepeliculas' key={pelicula.id}>
-                <a href={`/detalleCard/${pelicula.id}`}>
+                <Link to={`/detalle/${pelicula.id}`}>
                     <img src={`https://image.tmdb.org/t/p/original${pelicula.poster_path}`} alt={pelicula.title} />
                     <h3>{pelicula.title}</h3>
-                </a>
+                </Link>
                 {verMas && <p>{pelicula.overview}</p>}
                 <button onClick={this.cambiarVerMas}>
                     {verMas ? "Ver menos" : "Ver más"}
