@@ -8,46 +8,46 @@ class Peliculas extends Component {
         super(props);
         this.state = {
             peliculas: [],
-        };
-    }
+            cantidadMostrar: props.cantidadPeliculas,
+        }}
 
     filtrarPeliculas(nombrePelicula){
         const peliculasFiltradas = this.state.peliculas.filter(
             (elm) => elm.title.toLowerCase().includes(nombrePelicula.toLowerCase()) 
         )
-
         this.setState({
             peliculas: peliculasFiltradas
-        })
-        
-    }
+        })}
 
     componentDidMount() {
         const { url } = this.props;
         fetch(url)
             .then((resp) => resp.json())
-            .then((data) => {
-                this.setState({
-                    peliculas: data.results,
-                });
-            })
+            .then((data) => {this.setState({peliculas: data.results,})})
             .catch((err) => console.log(err));
     }
 
+    cargarMasPeliculas = () => {
+        this.setState(prevState => ({
+            cantidadMostrar: prevState.cantidadMostrar + 6
+        }));
+    }
+
     render() {
-        const { cantidadPeliculas, title } = this.props;
+        const { cantidadMostrar, peliculas } = this.state;
+        const { mostrarBotonCargarMas} = this.props;
     
         return (
             <section>
-                <h2>{title}</h2>
+                <h2>{this.props.title}</h2>
                 {this.props.mostrarComponenteControlado && (
                 <MiComponenteControlado filtrarPeliculas={ (nombre) => this.filtrarPeliculas(nombre) } />
                 )}
                 <ul>
-                    {this.state.peliculas.length === 0 ? (
+                    {peliculas.length === 0 ? (
                         <h3>Cargando...</h3>
                     ) : (
-                        this.state.peliculas.slice(0, cantidadPeliculas).map((pelicula) => (
+                        peliculas.slice(0, cantidadMostrar).map((pelicula) => (
                             <PeliculaUna
                                 key={pelicula.id}
                                 pelicula={pelicula}
@@ -55,6 +55,9 @@ class Peliculas extends Component {
                         ))
                     )}
                 </ul>
+                {mostrarBotonCargarMas && cantidadMostrar < peliculas.length && (
+                    <button className='kusa' onClick={this.cargarMasPeliculas}>Cargar más</button>
+                )}
             </section>
         );
     }

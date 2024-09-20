@@ -47,3 +47,20 @@ ul {
     flex-wrap: wrap;
     
 } 
+
+.kusa {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: grey;
+    border: none;
+    border-radius: 5px;
+}
+
+.kusa:hover {
+    background-color: #0056b3; 
+}
+
+
