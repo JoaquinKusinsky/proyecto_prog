@@ -11,7 +11,7 @@ class Home extends Component {
     return (
         <React.Fragment>
             <h2>Películas más populares <Link to="/populares">Ver todas</Link></h2>
-            <Peliculas url= {'https://api.themoviedb.org/3/movie/popular?api_key=9458a99baf5a9ba3fe341cd43217ef95'} cantidadPeliculas = {5}/> 
+            <Peliculas url= {'https://api.themoviedb.org/3/movie/popular?api_key=9458a99baf5a9ba3fe341cd43217ef95'} mostrarComponenteControlado={false} cantidadPeliculas = {5}/> 
             <h2>Películas en cartelera <Link to="/cartel">Ver todas</Link></h2>
             <Peliculas url= {'https://api.themoviedb.org/3/movie/now_playing?api_key=9458a99baf5a9ba3fe341cd43217ef95'} cantidadPeliculas = {5} />
         </React.Fragment>

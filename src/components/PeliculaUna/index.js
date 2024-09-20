@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Link } from 'react-router-dom';
 
-
 class PeliculaUna extends Component {
     constructor(props) {
         super(props);
@@ -23,9 +22,7 @@ class PeliculaUna extends Component {
             const esFavorito = favoritos.includes(this.props.pelicula.id);
             if(esFavorito){
                 this.setState({favorito: true});
-            }
-        }
-    }
+            }}}
 
     agregaraFavoritos = () => {
         const guardaFavs = localStorage.getItem('favoritos');
@@ -52,9 +49,12 @@ class PeliculaUna extends Component {
 
         return (
             <li className='containerDepeliculas' key={pelicula.id}>
-                <Link to={`/detalle/${pelicula.id}`}>
+               
                     <img src={`https://image.tmdb.org/t/p/original${pelicula.poster_path}`} alt={pelicula.title} />
                     <h3>{pelicula.title}</h3>
+
+                <Link to={`/detalle/${pelicula.id}`}>
+                    <button>Ir a detalle</button>
                 </Link>
                 
                 {verMas && <p>{pelicula.overview}</p>}
@@ -64,8 +64,8 @@ class PeliculaUna extends Component {
                 <button onClick={()=> !this.state.favorito ? this.agregaraFavoritos() : this.sacarDeFavoritos()}>
                     {this.state.favorito ? "Quitar de favoritos" : "Agregar a favoritos"} </button>
             </li>
+
         );
     }
 }
-
 export default PeliculaUna;

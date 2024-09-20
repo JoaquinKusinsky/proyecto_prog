@@ -29,9 +29,7 @@ function Header(props){
             }
         </ul>
         <ul  class="logo">
-            <a href="">
                 <li><img src="./img/logo.jpg" alt=""/></li>
-            </a>
         </ul>
     </nav>
    )

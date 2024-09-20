@@ -41,3 +41,9 @@ ul {
     padding: 0;
 }
 
+.containerDepeliculas button{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+} 

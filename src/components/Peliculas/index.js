@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PeliculaUna from '../PeliculaUna';
 import './peliculas.css';
+import MiComponenteControlado from '../ComponenteControlado';
 
 class Peliculas extends Component {
     constructor(props) {
@@ -8,6 +9,17 @@ class Peliculas extends Component {
         this.state = {
             peliculas: [],
         };
+    }
+
+    filtrarPeliculas(nombrePelicula){
+        const peliculasFiltradas = this.state.peliculas.filter(
+            (elm) => elm.title.toLowerCase().includes(nombrePelicula.toLowerCase()) 
+        )
+
+        this.setState({
+            peliculas: peliculasFiltradas
+        })
+        
     }
 
     componentDidMount() {
@@ -24,10 +36,13 @@ class Peliculas extends Component {
 
     render() {
         const { cantidadPeliculas, title } = this.props;
-
+    
         return (
             <section>
                 <h2>{title}</h2>
+                {this.props.mostrarComponenteControlado && (
+                <MiComponenteControlado filtrarPeliculas={ (nombre) => this.filtrarPeliculas(nombre) } />
+                )}
                 <ul>
                     {this.state.peliculas.length === 0 ? (
                         <h3>Cargando...</h3>
