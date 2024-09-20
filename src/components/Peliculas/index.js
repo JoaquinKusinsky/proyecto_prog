@@ -29,14 +29,16 @@ class Peliculas extends Component {
             <section>
                 <h2>{title}</h2>
                 <ul>
-                    {
+                    {this.state.peliculas.length === 0 ? (
+                        <h3>Cargando...</h3>
+                    ) : (
                         this.state.peliculas.slice(0, cantidadPeliculas).map((pelicula) => (
                             <PeliculaUna
                                 key={pelicula.id}
                                 pelicula={pelicula}
                             />
                         ))
-                    }
+                    )}
                 </ul>
             </section>
         );
