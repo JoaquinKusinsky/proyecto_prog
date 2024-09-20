@@ -35,9 +35,9 @@ sacarDeFav(){
 
 render(){
     const pelicula = this.props.pelicula;
-    if (!pelicula) {
+    if (pelicula == null) {
         return <p>Cargando...</p>;
-    }
+    } //mientras pelicula sea null va a retornar este "cargando", sino retorna lo de abajo
     return(
         
         <div className="detalle-card">

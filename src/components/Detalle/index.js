@@ -4,7 +4,7 @@ import DetalleCard from "../DetalleCard";
 class Detalle extends Component{
     constructor(props){
         super(props)
-        this.state = {movie: null, esCargando: true}
+        this.state = {movie: null}
         console.log(props);
     }
 
@@ -18,9 +18,6 @@ class Detalle extends Component{
     }
 
     render(){
-        if(this.state.esCargandoesCargando){
-            return <h3>Cargando...</h3>
-        }
         return(
             <section>
                 <DetalleCard
