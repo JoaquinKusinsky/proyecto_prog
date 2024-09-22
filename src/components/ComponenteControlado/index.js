@@ -27,7 +27,6 @@ class MiComponenteControlado extends Component{
             <form className='formulario' onSubmit={(event) => this.evitarSubmit(event)} >
                 <input className='input' placeholder='Buscar...' onChange={(event)=> this.controlarInputs(event)} value={this.state.valorInput1}
                 />
-                <button className='boton' type='submit'>Enviar</button>
             </form>
         )
     }
