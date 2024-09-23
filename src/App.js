@@ -8,7 +8,7 @@ import Populares from "./screens/Populares";
 import Cartel from "./screens/Cartel";
 import NotFound from "./screens/NotFound";
 import Detalle from "./components/Detalle";
-//import Busqueda from "./components/Busqueda";
+import SearchResults from "./screens/SearchResults";
 
 function App(props){
   return (
@@ -20,6 +20,7 @@ function App(props){
     <Route path="/populares" component={Populares}/>
     <Route path="/detalle/:id" component={Detalle}/>
     <Route path="/cartel" component={Cartel}/>
+    <Route path="/buscar" component={SearchResults}/>
     <Route path="" component={NotFound}/>
     </Switch>
     <Footer/>

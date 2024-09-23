@@ -28,9 +28,12 @@ function Header(props){
                 opciones.map((elm) => <Headers name={elm} />)
             }
         </ul>
+        <div className="logo-container">
+            <h4 className="nombre">CINEMANÍA</h4>
         <ul  class="logo">
                 <li><img src="./img/logo.jpg" alt=""/></li>
         </ul>
+        </div>
     </nav>
    )
 }
