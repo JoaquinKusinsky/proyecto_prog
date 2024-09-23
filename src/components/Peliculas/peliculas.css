@@ -79,7 +79,6 @@ body{
     transform: scale(1.05);
 }
 
-
 @media (max-width: 480px) {
     ul {
         flex-direction: column;

@@ -9,6 +9,7 @@ class Peliculas extends Component {
         this.state = {
             peliculas: [],
             peliculasBackUp: [],
+            pageACargar: 2,
             cantidadMostrar: props.cantidadPeliculas,
         }}
 
@@ -28,11 +29,18 @@ class Peliculas extends Component {
             .catch((err) => console.log(err));
     }
 
-    cargarMasPeliculas = () => {
-        this.setState(prevState => ({
-            cantidadMostrar: prevState.cantidadMostrar + 6
-        }),
-    );
+    cargarMas(){
+        const { pageACargar , cantidadMostrar } = this.state;
+        const { url } = this.props;
+        const nuevaUrl = `${url}&page=${pageACargar}`;
+        fetch(nuevaUrl)
+        .then((resp) => resp.json())
+        .then((data) => {this.setState({
+            peliculas: this.state.peliculas.concat(data.results),
+            pageACargar: pageACargar + 1,
+            cantidadMostrar: cantidadMostrar + this.props.cantidadPeliculas
+        })})
+        .catch((err) => console.log(err));
     }
  
     render() {
@@ -57,8 +65,8 @@ class Peliculas extends Component {
                         ))
                     )}
                 </ul>
-                {mostrarBotonCargarMas && cantidadMostrar < peliculas.length && (
-                    <button className='kusa' onClick={this.cargarMasPeliculas}>Cargar más</button>
+                {mostrarBotonCargarMas && cantidadMostrar <= peliculas.length && (
+                    <button className='kusa' onClick={() => this.cargarMas()}>Cargar más</button>
                 )}
             </section>
         );
