@@ -8,11 +8,12 @@ class Peliculas extends Component {
         super(props);
         this.state = {
             peliculas: [],
+            peliculasBackUp: [],
             cantidadMostrar: props.cantidadPeliculas,
         }}
 
     filtrarPeliculas(nombrePelicula){
-        const peliculasFiltradas = this.state.peliculas.filter(
+        const peliculasFiltradas = this.state.peliculasBackUp.filter(
             (elm) => elm.title.toLowerCase().includes(nombrePelicula.toLowerCase()) 
         )
         this.setState({
@@ -23,16 +24,17 @@ class Peliculas extends Component {
         const { url } = this.props;
         fetch(url)
             .then((resp) => resp.json())
-            .then((data) => {this.setState({peliculas: data.results,})})
+            .then((data) => {this.setState({peliculas: data.results, peliculasBackUp: data.results})})
             .catch((err) => console.log(err));
     }
 
     cargarMasPeliculas = () => {
         this.setState(prevState => ({
             cantidadMostrar: prevState.cantidadMostrar + 6
-        }));
+        }),
+    );
     }
-
+ 
     render() {
         const { cantidadMostrar, peliculas } = this.state;
         const { mostrarBotonCargarMas} = this.props;
