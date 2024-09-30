@@ -8,31 +8,6 @@ class DetalleCard extends Component{
         this.state = {favorito: false}
     }
 
-agregaraFavoritos(){
-    let guardaFavs = localStorage.getItem("favoritos")
-    if ( guardaFavs !== null){
-        const favoritos = JSON.parse(guardaFavs)
-        favoritos.push(this.props.pelicula.id)
-        const stringStorage = JSON.stringify(favoritos)
-        localStorage.setItem("favoritos" , stringStorage)
-    } else{
-        const fav1 = [this.props.pelicula.id]
-         const stringStorage = JSON.stringify(fav1)
-         localStorage.setItem("favoritos" , stringStorage)
-    }
-    this.setState({favorito:true})
-}
-
-sacarDeFavoritos(){
-    let guardaFavs = localStorage.getItem("favoritos")
-    let parsedStorage = JSON.parse(guardaFavs)
-    const fav2 = parsedStorage.filter((id) => id !== this.props.pelicula.id)
-    const stringStorage = JSON.stringify(fav2)
-    localStorage.setItem("favoritos" , stringStorage)
-    this.setState({favorito:false})
-}
-
-
 render(){
     const pelicula = this.props.pelicula;
     if (pelicula == null) {
@@ -53,8 +28,6 @@ render(){
             <li>Géneros: {pelicula.genres && pelicula.genres.length > 0 ? (pelicula.genres.map((genre , id) => <li key={id}>{genre.name}</li>)) : (<li>No se encontraron géneros</li>)}</li>
         </ul>
         <p>{pelicula.overview}</p>
-        <button onClick={()=> !this.state.favorito ? this.agregaraFavoritos() : this.sacarDeFavoritos()}>
-                    {this.state.favorito ? "Quitar de favoritos" : "Agregar a favoritos"} </button>
         </section>
         </div>
         
